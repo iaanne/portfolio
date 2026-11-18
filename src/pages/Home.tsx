@@ -19,8 +19,8 @@ const experience = [
   {
     period: "November 2026",
     role: "Lexa AI Frontend Tester",
-    org: "Nabawi Tech",
-    desc: "Melakukan test script Lexa AI hukum berbasis FSD untuk penelitian RG DIKE dengan parameter tertentu, untuk mengecek apakah fungsionalitas dan non fungsionalitas pass atau failed.",
+    org: "UNS",
+    desc: "Melakukan test script Lexa AI hukum milik Nabawi Tech berbasis FSD untuk penelitian RG DIKE dengan parameter tertentu, untuk mengecek apakah fungsionalitas dan non fungsionalitas pass atau failed.",
     icon: Briefcase,
   },
   {
@@ -115,7 +115,7 @@ function Hero() {
 
       <p className="mt-7 max-w-2xl text-base leading-relaxed text-ink/80 sm:text-lg">
         Mahasiswa Sains Data di <strong className="font-semibold text-ink">Universitas Sebelas Maret</strong>,
-        aku membangun ML model, dan Data pipeline untuk menyelesaikan masalah.
+        aku membangun Machine Learning dan Deeplearning model serta Data Pipeline untuk menyelesaikan masalah.
       </p>
 
       <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">

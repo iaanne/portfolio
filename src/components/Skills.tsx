@@ -19,14 +19,14 @@ export function Skills() {
         </p>
       </Reveal>
 
-      <Reveal delay={60} className="mt-6 flex w-fit max-w-full flex-wrap border-2 border-ink bg-paper">
+      <Reveal delay={60} className="mt-6 grid w-full max-w-3xl grid-cols-3 gap-2 lg:mx-auto lg:max-w-5xl lg:grid-cols-6">
         {tabs.map((tab) => (
           <button
             key={tab}
             type="button"
             onClick={() => setActive(tab)}
             aria-pressed={active === tab}
-            className={`border-r-2 border-ink px-3.5 py-2.5 font-mono text-[10.5px] uppercase tracking-[0.1em] transition-colors last:border-r-0 ${
+            className={`flex h-[3.75rem] items-center justify-center border-2 border-ink px-2 py-2 text-center font-mono text-[9.5px] uppercase leading-snug tracking-[0.08em] transition-colors sm:text-[10.5px] lg:whitespace-nowrap ${
               active === tab ? "bg-ink text-cream" : "hover:bg-butter"
             }`}
           >

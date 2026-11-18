@@ -38,7 +38,7 @@ export const projects: Project[] = [
     index: "02",
     title: "Monitoring Dedolarisasi ASEAN",
     repoName: "rosbd-finalproject-kelompok4",
-    category: "Real-time data",
+    category: "Real-time big data",
     year: "2026",
     accent: "pine",
     summary:
@@ -72,7 +72,7 @@ export const projects: Project[] = [
   {
     slug: "rsi-learning-platform",
     index: "04",
-    title: "RSI Learning Platform",
+    title: "SIPANDA Learning Platform",
     repoName: "RSI_Learning_Platform_Website",
     category: "Aplikasi web",
     year: "2026",
