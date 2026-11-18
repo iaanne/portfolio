@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { archive } from "../data/archive";
 import { projects, type Project } from "../data/projects";
 import { Reveal } from "../components/Reveal";
+import { Skills } from "../components/Skills";
 
 const accentClass: Record<Project["accent"], string> = {
   butter: "bg-butter",
@@ -16,61 +16,81 @@ const accentClass: Record<Project["accent"], string> = {
 
 function ProjectCard({ project, delay }: { project: Project; delay: number }) {
   return (
-    <Reveal delay={delay} className={project.featured ? "md:col-span-2" : ""}>
-      <Link
-        to={`/proyek/${project.slug}`}
-        className={`card lift group flex h-full flex-col justify-between p-6 sm:p-7 ${accentClass[project.accent]}`}
-      >
-        <div>
-          <div className="flex items-baseline justify-between gap-4">
+    <Reveal delay={delay}>
+      <article className="card lift flex h-full flex-col overflow-hidden">
+        <Link
+          to={`/proyek/${project.slug}`}
+          className={`flex h-28 items-end justify-between border-b-2 border-ink p-4 ${accentClass[project.accent]}`}
+          aria-label={`Buka ${project.title}`}
+        >
+          <span className="text-4xl font-bold leading-none tracking-tight opacity-80">{project.index}</span>
+          <span className="font-mono text-[10px] uppercase tracking-[0.12em] opacity-70">{project.year}</span>
+        </Link>
+
+        <div className="flex flex-1 flex-col p-5">
+          <div className="flex items-center justify-between gap-3">
             <span className="chip bg-cream/70 text-ink">{project.category}</span>
-            <span className="font-mono text-[11px] opacity-60">{project.year}</span>
+            <a
+              href={project.repo}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-1 font-mono text-[10px] uppercase tracking-[0.1em] text-ink/60 hover:text-persimmon"
+            >
+              Repo <ArrowUpRight size={12} aria-hidden="true" />
+            </a>
           </div>
 
-          <h3 className={`mt-5 font-bold tracking-tight ${project.featured ? "text-3xl sm:text-4xl" : "text-2xl"}`}>
-            {project.title}
+          <h3 className="mt-4 text-xl font-bold leading-snug tracking-tight">
+            <Link to={`/proyek/${project.slug}`} className="hover:underline hover:underline-offset-4">
+              {project.title}
+            </Link>
           </h3>
-          <p className={`mt-3 max-w-xl text-sm leading-relaxed ${project.featured ? "sm:text-base" : ""} opacity-80`}>
-            {project.summary}
-          </p>
-        </div>
 
-        <div className="mt-7 flex items-end justify-between gap-4 border-t border-ink/25 pt-4">
-          <p className="font-mono text-[11px] leading-relaxed opacity-70">
-            {project.stack.slice(0, 4).join(" · ")}
-          </p>
-          <ArrowRight
-            size={15}
-            aria-hidden="true"
-            className="shrink-0 transition-transform duration-200 group-hover:translate-x-1"
-          />
+          <p className="mt-2 text-sm leading-relaxed text-ink/75">{project.summary}</p>
+
+          <ul className="mt-4 flex flex-wrap gap-1.5">
+            {project.stack.length ? (
+              project.stack.slice(0, 4).map((item) => (
+                <li key={item} className="chip border-ink/40 bg-cream/60">
+                  {item}
+                </li>
+              ))
+            ) : (
+              <li className="chip border-ink/30 bg-cream/60">Belum ada kode</li>
+            )}
+          </ul>
+
+          <div className="mt-auto pt-5">
+            <Link
+              to={`/proyek/${project.slug}`}
+              className="btn w-full justify-between bg-cream py-2.5 text-[11px]"
+            >
+              Lihat proyek <ArrowRight size={14} aria-hidden="true" />
+            </Link>
+          </div>
         </div>
-      </Link>
+      </article>
     </Reveal>
   );
 }
 
 function Hero() {
   return (
-    <section className="mx-auto max-w-6xl px-5 pb-12 pt-8 sm:px-8 sm:pt-12">
-      <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b-2 border-ink pb-3">
-        <p className="font-mono text-[11px] uppercase tracking-[0.16em]">Adrian Farrel Aziz Yatyoga</p>
-        <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-ash">Surakarta</p>
-      </div>
+    <section id="beranda" className="mx-auto max-w-6xl scroll-mt-20 px-5 pb-8 pt-10 sm:px-8 sm:pt-14">
+      <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-ash">Halo, aku ian.</p>
 
-      <h1 className="mt-12 max-w-5xl text-[clamp(2.5rem,7vw,5.6rem)] font-bold leading-[0.94] tracking-[-0.04em]">
-        Python untuk data, TypeScript untuk halaman web.
+      <h1 className="mt-5 max-w-5xl text-pretty text-[clamp(2.25rem,6.2vw,5rem)] font-bold leading-[0.96] tracking-[-0.04em]">
+        Sebuah ruang untuk menampilkan capstone selama menyelam di dunia data
       </h1>
 
       <p className="mt-7 max-w-2xl text-base leading-relaxed text-ink/80 sm:text-lg">
-        Mahasiswa Sains Data UNS angkatan 2024. Kebanyakan yang ada di sini berawal dari tugas kuliah
-        yang tumbuh jadi proyek: pipeline Azure, lakehouse Iceberg, dasbor Streamlit, dan beberapa
-        aplikasi Next.js.
+        Mahasiswa Sains Data di <strong className="font-semibold text-ink">Universitas Sebelas Maret</strong>,
+        aku membangun ML model, dan Data pipeline untuk menyelesaikan masalah.
       </p>
 
       <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
-        <a href="#karya" className="btn bg-persimmon text-cream">
-          Lihat karya <ArrowRight size={14} aria-hidden="true" />
+        <a href="#proyek" className="btn bg-persimmon text-cream">
+          Lihat proyek <ArrowRight size={14} aria-hidden="true" />
         </a>
         <a
           href="#tentang"
@@ -79,67 +99,24 @@ function Hero() {
           Tentang saya
         </a>
       </div>
-
-      <p className="mt-10 font-mono text-[11px] uppercase tracking-[0.14em] text-ash">
-        36 repo publik · 10 proyek pilihan · semester 5
-      </p>
     </section>
   );
 }
 
 function Work() {
   return (
-    <section id="karya" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-14 sm:px-8">
-      <Reveal className="flex items-baseline justify-between gap-4 border-b-2 border-ink pb-3">
-        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Karya</h2>
-        <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-ash">10 dari 36 repo</p>
-      </Reveal>
-
-      <div className="mt-6 grid gap-6 md:grid-cols-2">
-        {projects.map((project, index) => (
-          <ProjectCard key={project.slug} project={project} delay={(index % 2) * 70} />
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function Archive() {
-  return (
-    <section id="arsip" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-14 sm:px-8">
-      <Reveal className="flex items-baseline justify-between gap-4 border-b-2 border-ink pb-3">
-        <h2 className="text-xl font-bold tracking-tight">Arsip</h2>
-        <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-ash">
-          {archive.length} repo lain
+    <section id="proyek" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-14 sm:px-8">
+      <Reveal className="border-b-2 border-ink pb-5">
+        <p className="label text-ash">Work</p>
+        <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Proyek terpilih</h2>
+        <p className="mt-3 max-w-xl text-sm leading-relaxed text-ink/75">
+          Delapan repo yang paling sering saya buka lagi: pipeline, model, dan aplikasi.
         </p>
       </Reveal>
 
-      <p className="mt-4 max-w-xl text-sm leading-relaxed text-ink/75">
-        Latihan kelas, eksperimen kecil, dan beberapa yang berhenti di tengah jalan. Semuanya masih
-        publik.
-      </p>
-
-      <div className="mt-4 grid gap-x-10 sm:grid-cols-2">
-        {archive.map((repo) => (
-          <div key={repo.name} className="min-w-0 border-b border-ink/15">
-            <a
-              href={repo.url}
-              target="_blank"
-              rel="noreferrer"
-              className="group flex items-center gap-3 py-2.5 hover:bg-butter/60"
-            >
-              <span className="min-w-0 flex-1 truncate font-mono text-xs">{repo.name}</span>
-              <span className="hidden font-mono text-[10px] uppercase tracking-widest text-ash sm:inline">
-                {repo.language}
-              </span>
-              <span className="font-mono text-[10px] text-ash">{repo.year}</span>
-              <ArrowUpRight
-                size={13}
-                aria-hidden="true"
-                className="shrink-0 opacity-40 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100"
-              />
-            </a>
-          </div>
+      <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {projects.map((project, index) => (
+          <ProjectCard key={project.slug} project={project} delay={(index % 3) * 70} />
         ))}
       </div>
     </section>
@@ -149,29 +126,19 @@ function Archive() {
 function About() {
   return (
     <section id="tentang" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-14 sm:px-8">
-      <Reveal className="flex items-baseline justify-between gap-4 border-b-2 border-ink pb-3">
+      <Reveal className="border-b-2 border-ink pb-3">
         <h2 className="text-xl font-bold tracking-tight">Tentang</h2>
-        <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-ash">UNS · 2024</p>
       </Reveal>
 
       <Reveal className="mt-6 max-w-2xl space-y-4 text-sm leading-relaxed text-ink/85 sm:text-base">
         <p>
-          Saya Adrian, mahasiswa Sains Data di UNS. Pekerjaan saya biasanya berhenti di dua tempat:
-          pipeline yang menyiapkan data, dan halaman yang menampilkannya.
+          Keseharian saya sebagai mahasiswa selama berkuliah biasanya berputar pada siklus merancang
+          arsitektur pipeline, train and test data, serta mempelajari AI agent.
         </p>
         <p>
-          Hampir semua proyek di atas adalah tugas kelompok. Bagian saya berbeda-beda, dari menyusun
-          storage dan pipeline, membangun frontend, merapikan ontologi, sampai menulis chatbot yang
-          jawabannya diambil dari hasil query, bukan dari model bahasa.
+          Beberapa di atas merupakan proyek teamwork dan aku memegang bagian yang berbeda-beda.
         </p>
-        <p>
-          Di luar kuliah saya memakai Linux sehari-hari dan cukup sering mengubah tampilannya. Repo
-          yang belum selesai tetap saya biarkan publik supaya kelihatan prosesnya.
-        </p>
-        <p className="pt-2 font-mono text-[11px] leading-relaxed text-ash">
-          Sering dipakai: Python, Pandas, SQL, Apache Iceberg, Azure Data Factory, Next.js, React,
-          TypeScript, Tailwind, FastAPI, Streamlit. Untuk ontologi: Protégé, SPARQL.
-        </p>
+        <p>Di luar kuliah aku memakai Linux sehari-hari dan cukup sering mengubah tampilannya.</p>
       </Reveal>
     </section>
   );
@@ -185,8 +152,8 @@ export function Home() {
   return (
     <>
       <Hero />
+      <Skills />
       <Work />
-      <Archive />
       <About />
     </>
   );

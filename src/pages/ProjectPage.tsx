@@ -20,8 +20,8 @@ export function ProjectPage() {
         <p className="font-mono text-[11px] text-ash">404</p>
         <h1 className="mt-4 text-4xl font-bold tracking-tight">Halaman ini tidak ada.</h1>
         <p className="mt-3 text-sm text-ink/70">Tautannya mungkin salah, atau proyeknya sudah saya ganti nama.</p>
-        <Link to="/#karya" className="mt-8 inline-flex items-center gap-2 text-sm underline decoration-2 underline-offset-4">
-          <ArrowLeft size={14} aria-hidden="true" /> Kembali ke karya
+        <Link to="/#proyek" className="mt-8 inline-flex items-center gap-2 text-sm underline decoration-2 underline-offset-4">
+          <ArrowLeft size={14} aria-hidden="true" /> Kembali ke proyek
         </Link>
       </section>
     );
@@ -33,10 +33,10 @@ export function ProjectPage() {
   return (
     <article className="mx-auto max-w-3xl px-5 py-10 sm:px-8 sm:py-14">
       <Link
-        to="/#karya"
+        to="/#proyek"
         className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-ash hover:text-ink"
       >
-        <ArrowLeft size={13} aria-hidden="true" /> Semua karya
+        <ArrowLeft size={13} aria-hidden="true" /> Semua proyek
       </Link>
 
       <header className="mt-8">
@@ -61,8 +61,12 @@ export function ProjectPage() {
       </div>
 
       <p className="mt-8 font-mono text-[11px] leading-relaxed text-ash">
-        Stack: {project.stack.join(", ")}
+        {project.stack.length ? `Stack: ${project.stack.join(", ")}` : "Stack: belum ada kode"}
       </p>
+
+      {project.note ? (
+        <p className="mt-3 max-w-xl text-sm leading-relaxed text-ash">{project.note}</p>
+      ) : null}
 
       <div className="mt-8">
         <a href={project.repo} target="_blank" rel="noreferrer" className="btn bg-persimmon text-cream">

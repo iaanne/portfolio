@@ -1,18 +1,19 @@
 const links = [
   { href: "https://github.com/iaanne", label: "github.com/iaanne" },
+  { href: "https://www.linkedin.com/in/adrianyatyoga", label: "linkedin.com/adrianyatyoga" },
   { href: "https://instagram.com/iannfr__", label: "instagram.com/iannfr__" },
-  { href: "https://github.com/iaanne?tab=repositories", label: "36 repo publik" },
 ];
 
 export function SiteFooter() {
   return (
-    <footer className="border-t-2 border-ink bg-ink text-cream">
+    <footer id="kontak" className="scroll-mt-20 border-t-2 border-ink bg-ink text-cream">
       <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8">
         <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
           <div>
             <h2 className="text-2xl font-bold tracking-tight">Kontak</h2>
-            <p className="mt-2 max-w-sm text-sm leading-relaxed text-cream/65">
-              Cara tercepat menghubungi saya lewat GitHub atau Instagram.
+            <p className="mt-3 max-w-sm text-sm leading-relaxed text-cream/70">
+              Saya saat ini terbuka untuk internship dan opportunity di bidang data science, machine
+              learning, dan AI. Jangan ragu untuk menghubungi saya.
             </p>
           </div>
 
