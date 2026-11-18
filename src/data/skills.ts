@@ -14,7 +14,6 @@ export const skillGroups: SkillGroup[] = [
       { icon: "sqlserver", label: "SQL Server" },
       { icon: "pandas", label: "Pandas" },
       { icon: "azure", label: "Azure" },
-      { icon: "sql", label: "SQL" },
       { icon: "fastapi", label: "FastAPI" },
     ],
   },

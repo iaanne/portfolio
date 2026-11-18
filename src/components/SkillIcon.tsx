@@ -1,7 +1,7 @@
 import { Database } from "lucide-react";
 
 import postgresqlLogo from "../assets/brand/brand-postgresql.svg";
-import prefectLogo from "../assets/brand/brand-prefect.svg";
+import prefectLogo from "../assets/brand/brand-prefect.png";
 import podmanLogo from "../assets/brand/brand-podman.svg";
 import numpyLogo from "../assets/brand/brand-numpy.svg";
 import pandasLogo from "../assets/brand/brand-pandas.svg";
@@ -21,7 +21,7 @@ import pytorchLogo from "../assets/brand/brand-pytorch.svg";
 import kerasLogo from "../assets/brand/brand-keras.svg";
 import scikitlearnLogo from "../assets/brand/brand-scikitlearn.svg";
 import opencvLogo from "../assets/brand/brand-opencv.svg";
-import tableauLogo from "../assets/brand/brand-tableau.svg";
+import tableauLogo from "../assets/brand/brand-tableau.png";
 import powerbiLogo from "../assets/brand/brand-powerbi.svg";
 import streamlitLogo from "../assets/brand/brand-streamlit.svg";
 import seabornLogo from "../assets/brand/brand-seaborn.svg";
@@ -73,6 +73,7 @@ const brandScale: Record<string, number> = {
   neo4j: 1.55,
   scikitlearn: 1.3,
   niri: 1.25,
+  sqlserver: 1.2,
   apachekafka: 1.2,
   pandas: 1.15,
   python: 1.05,
