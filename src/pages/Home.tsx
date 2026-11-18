@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Briefcase, FlaskConical, GraduationCap } from "lucide-react";
 import { projects, type Project } from "../data/projects";
 import { Reveal } from "../components/Reveal";
 import { Skills } from "../components/Skills";
+import { SkillDrift } from "../components/SkillDrift";
 
 const accentClass: Record<Project["accent"], string> = {
   butter: "bg-butter",
@@ -13,6 +14,30 @@ const accentClass: Record<Project["accent"], string> = {
   denim: "bg-denim text-cream",
   paper: "bg-paper",
 };
+
+const experience = [
+  {
+    period: "November 2026",
+    role: "Lexa AI Frontend Tester",
+    org: "Nabawi Tech",
+    desc: "Melakukan test script Lexa AI hukum berbasis FSD untuk penelitian RG DIKE dengan parameter tertentu, untuk mengecek apakah fungsionalitas dan non fungsionalitas pass atau failed.",
+    icon: Briefcase,
+  },
+  {
+    period: "September - Oktober 2026",
+    role: "Grup Riset dan Penelitian",
+    org: "RG DIKE",
+    desc: "Asistensi mengajar penelitian RG DIKE dengan membuat modul guru serta melakukan pembelajaran Open Source Software (OSS) di MI Cawan Klaten.",
+    icon: FlaskConical,
+  },
+  {
+    period: "Juli - Desember 2025",
+    role: "Asisten Praktikum Dasar Pemrograman",
+    org: "UNS",
+    desc: "Melakukan asistensi pembelajaran praktikum Dasar Pemrograman dengan Python dan beberapa library, membantu memperkuat dasar logika pemrograman.",
+    icon: GraduationCap,
+  },
+];
 
 function ProjectCard({ project, delay }: { project: Project; delay: number }) {
   return (
@@ -76,8 +101,13 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
 
 function Hero() {
   return (
-    <section id="beranda" className="mx-auto max-w-6xl scroll-mt-20 px-5 pb-8 pt-10 sm:px-8 sm:pt-14">
-      <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-ash">Halo, aku ian.</p>
+    <section
+      id="beranda"
+      className="relative mx-auto flex min-h-[calc(100svh-4rem)] max-w-6xl scroll-mt-20 flex-col justify-center overflow-hidden px-5 py-16 sm:px-8"
+    >
+      <SkillDrift />
+      <div className="relative z-10 w-full">
+        <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-ash">Halo, aku ian.</p>
 
       <h1 className="mt-5 max-w-5xl text-pretty text-[clamp(2.25rem,6.2vw,5rem)] font-bold leading-[0.96] tracking-[-0.04em]">
         Sebuah ruang untuk menampilkan capstone selama menyelam di dunia data
@@ -99,13 +129,57 @@ function Hero() {
           Tentang saya
         </a>
       </div>
+      </div>
+    </section>
+  );
+}
+
+function Experience() {
+  return (
+    <section id="pengalaman" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-16 sm:px-8 sm:py-24">
+      <Reveal className="border-b-2 border-ink pb-5">
+        <p className="label text-ash">Journey</p>
+        <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Pengalaman</h2>
+      </Reveal>
+
+      <ol className="relative mt-4">
+        {experience.map((item, index) => {
+          const Icon = item.icon;
+          return (
+            <li key={item.role} className="border-b border-ink/15 last:border-b-0">
+              <Reveal delay={index * 70} className="relative flex gap-5 py-7">
+                {index < experience.length - 1 ? (
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute left-5 top-12 -bottom-12 w-0.5 -translate-x-1/2 bg-ink/20"
+                  />
+                ) : null}
+                <span className="relative z-10 mt-1 flex size-10 shrink-0 items-center justify-center border-2 border-ink bg-paper text-ink shadow-[3px_3px_0_0_var(--color-ink)]">
+                  <Icon size={18} strokeWidth={1.7} aria-hidden="true" />
+                </span>
+
+                <div>
+                  <p className="font-mono text-[10.5px] uppercase tracking-[0.12em] text-ash">
+                    {item.period}
+                  </p>
+                  <h3 className="mt-2 text-lg font-bold leading-snug tracking-tight sm:text-xl">
+                    {item.role}
+                  </h3>
+                  <p className="mt-1 text-sm text-ink/75">{item.org}</p>
+                  <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink/70">{item.desc}</p>
+                </div>
+              </Reveal>
+            </li>
+          );
+        })}
+      </ol>
     </section>
   );
 }
 
 function Work() {
   return (
-    <section id="proyek" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-14 sm:px-8">
+    <section id="proyek" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-16 sm:px-8 sm:py-24">
       <Reveal className="border-b-2 border-ink pb-5">
         <p className="label text-ash">Work</p>
         <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Proyek terpilih</h2>
@@ -125,7 +199,7 @@ function Work() {
 
 function About() {
   return (
-    <section id="tentang" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-14 sm:px-8">
+    <section id="tentang" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-16 sm:px-8 sm:py-24">
       <Reveal className="border-b-2 border-ink pb-3">
         <h2 className="text-xl font-bold tracking-tight">Tentang</h2>
       </Reveal>
@@ -153,6 +227,7 @@ export function Home() {
     <>
       <Hero />
       <Skills />
+      <Experience />
       <Work />
       <About />
     </>

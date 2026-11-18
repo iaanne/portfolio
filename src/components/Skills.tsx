@@ -1,59 +1,7 @@
 import { useState } from "react";
 import { Reveal } from "./Reveal";
 import { SkillMark } from "./SkillIcon";
-
-const groups: { title: string; items: { icon: string; label: string }[] }[] = [
-  {
-    title: "Data & pipeline",
-    items: [
-      { icon: "postgresql", label: "PostgreSQL" },
-      { icon: "prefect", label: "Prefect" },
-      { icon: "podman", label: "Podman" },
-      { icon: "numpy", label: "NumPy" },
-      { icon: "sqlserver", label: "SQL Server" },
-      { icon: "pandas", label: "Pandas" },
-      { icon: "adf", label: "Azure Data Factory" },
-      { icon: "sql", label: "SQL" },
-    ],
-  },
-  {
-    title: "Big data",
-    items: [
-      { icon: "redis", label: "Redis" },
-      { icon: "apachespark", label: "Spark" },
-      { icon: "apachecassandra", label: "Cassandra" },
-      { icon: "garage", label: "Garage" },
-      { icon: "neo4j", label: "Neo4j" },
-      { icon: "apachekafka", label: "Kafka" },
-    ],
-  },
-  {
-    title: "Machine learning",
-    items: [
-      { icon: "python", label: "Python" },
-      { icon: "tensorflow", label: "TensorFlow" },
-      { icon: "pytorch", label: "PyTorch" },
-      { icon: "scikitlearn", label: "scikit-learn" },
-      { icon: "cnn", label: "CNN" },
-    ],
-  },
-  {
-    title: "Visualization",
-    items: [
-      { icon: "tableau", label: "Tableau" },
-      { icon: "powerbi", label: "Power BI" },
-      { icon: "streamlit", label: "Streamlit" },
-      { icon: "excel", label: "Excel" },
-    ],
-  },
-  {
-    title: "Tools",
-    items: [
-      { icon: "neovim", label: "Neovim" },
-      { icon: "git", label: "Git" },
-    ],
-  },
-];
+import { skillGroups as groups } from "../data/skills";
 
 const tabs = ["Semua", ...groups.map((group) => group.title)];
 
@@ -62,7 +10,7 @@ export function Skills() {
   const visible = active === "Semua" ? groups : groups.filter((group) => group.title === active);
 
   return (
-    <section id="skills" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-14 sm:px-8">
+    <section id="skills" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-16 sm:px-8 sm:py-24">
       <Reveal className="border-b-2 border-ink pb-5">
         <p className="label text-ash">Skills</p>
         <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Skills &amp; tools</h2>

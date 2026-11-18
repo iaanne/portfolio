@@ -6,8 +6,11 @@ import { Home } from "./pages/Home";
 import { ProjectPage } from "./pages/ProjectPage";
 
 export default function App() {
+  const base = import.meta.env.BASE_URL.replace(/\/$/, "") || "/";
+
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={base}>
+      <div className="flex min-h-svh flex-col">
       <ScrollManager />
       <a
         href="#konten"
@@ -16,7 +19,7 @@ export default function App() {
         Lompat ke konten
       </a>
       <SiteHeader />
-      <main id="konten">
+      <main id="konten" className="flex-1">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/proyek/:slug" element={<ProjectPage />} />
@@ -24,6 +27,7 @@ export default function App() {
         </Routes>
       </main>
       <SiteFooter />
+      </div>
     </BrowserRouter>
   );
 }

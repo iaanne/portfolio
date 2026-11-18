@@ -5,6 +5,7 @@ import { Menu, X } from "lucide-react";
 const links = [
   { href: "/#beranda", label: "Beranda" },
   { href: "/#skills", label: "Skills" },
+  { href: "/#pengalaman", label: "Pengalaman" },
   { href: "/#proyek", label: "Proyek" },
   { href: "/#tentang", label: "Tentang" },
   { href: "/#kontak", label: "Kontak" },
@@ -35,7 +36,7 @@ export function SiteHeader() {
           <span className="inline-block size-2.5 -translate-y-0.5 rotate-45 bg-persimmon transition-transform group-hover:rotate-[135deg]" />
         </Link>
 
-        <nav className="hidden items-center gap-6 md:flex" aria-label="Navigasi utama">
+        <nav className="hidden items-center gap-5 lg:flex" aria-label="Navigasi utama">
           {links.map((link) => (
             <Link
               key={link.href}
@@ -63,7 +64,7 @@ export function SiteHeader() {
             aria-expanded={open}
             aria-controls="menu-hp"
             aria-label={open ? "Tutup menu" : "Buka menu"}
-            className="flex size-10 items-center justify-center border-2 border-ink bg-paper shadow-[3px_3px_0_0_var(--color-ink)] md:hidden"
+            className="flex size-10 items-center justify-center border-2 border-ink bg-paper shadow-[3px_3px_0_0_var(--color-ink)] lg:hidden"
           >
             {open ? <X size={18} aria-hidden="true" /> : <Menu size={18} aria-hidden="true" />}
           </button>
@@ -71,7 +72,7 @@ export function SiteHeader() {
       </div>
 
       {open ? (
-        <div id="menu-hp" className="border-t-2 border-ink bg-cream px-5 pb-6 pt-1 md:hidden">
+        <div id="menu-hp" className="border-t-2 border-ink bg-cream px-5 pb-6 pt-1 lg:hidden">
           <nav aria-label="Navigasi utama versi ponsel">
             <ul>
               {links.map((link) => (
