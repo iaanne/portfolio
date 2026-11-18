@@ -5,6 +5,7 @@ import { projects, type Project } from "../data/projects";
 import { Reveal } from "../components/Reveal";
 import { Skills } from "../components/Skills";
 import { SkillDrift } from "../components/SkillDrift";
+import profilePhoto from "../assets/profile.jpg";
 
 const accentClass: Record<Project["accent"], string> = {
   butter: "bg-butter",
@@ -103,22 +104,35 @@ function Hero() {
   return (
     <section
       id="beranda"
-      className="relative mx-auto flex min-h-[calc(100svh-4rem)] max-w-6xl scroll-mt-20 flex-col justify-center overflow-hidden px-5 py-16 sm:px-8"
+      className="relative mx-auto flex min-h-[calc(100svh-4rem)] max-w-6xl scroll-mt-20 flex-col justify-center overflow-hidden px-5 py-12 sm:px-8 sm:py-14"
     >
       <SkillDrift />
-      <div className="relative z-10 w-full">
+      <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center gap-8">
+      <figure className="order-first mx-auto w-full max-w-[128px] sm:max-w-[160px] lg:max-w-[176px]">
+        <div className="border-2 border-ink bg-paper p-1.5 shadow-[5px_5px_0_0_var(--color-ink)] lg:p-2 lg:shadow-[8px_8px_0_0_var(--color-ink)]">
+          <img
+            src={profilePhoto}
+            width={640}
+            height={800}
+            alt="Ian, mahasiswa Sains Data Universitas Sebelas Maret"
+            className="aspect-[4/5] w-full object-cover"
+          />
+        </div>
+      </figure>
+
+      <div className="w-full text-center">
         <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-ash">Halo, aku ian.</p>
 
-      <h1 className="mt-5 max-w-5xl text-pretty text-[clamp(2.25rem,6.2vw,5rem)] font-bold leading-[0.96] tracking-[-0.04em]">
+      <h1 className="mx-auto mt-5 max-w-4xl text-pretty text-[clamp(2.25rem,5vw,4rem)] font-bold leading-[0.96] tracking-[-0.04em]">
         Sebuah ruang untuk menampilkan capstone selama menyelam di dunia data
       </h1>
 
-      <p className="mt-7 max-w-2xl text-base leading-relaxed text-ink/80 sm:text-lg">
+      <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-ink/80 sm:text-lg">
         Mahasiswa Sains Data di <strong className="font-semibold text-ink">Universitas Sebelas Maret</strong>,
         aku membangun Machine Learning dan Deeplearning model serta Data Pipeline untuk menyelesaikan masalah.
       </p>
 
-      <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+      <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-4">
         <a href="#proyek" className="btn bg-persimmon text-cream">
           Lihat proyek <ArrowRight size={14} aria-hidden="true" />
         </a>
@@ -130,13 +144,14 @@ function Hero() {
         </a>
       </div>
       </div>
+      </div>
     </section>
   );
 }
 
 function Experience() {
   return (
-    <section id="pengalaman" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-16 sm:px-8 sm:py-24">
+    <section id="pengalaman" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-12 sm:px-8 sm:py-14 sm:py-24">
       <Reveal className="border-b-2 border-ink pb-5">
         <p className="label text-ash">Journey</p>
         <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Pengalaman</h2>
@@ -179,7 +194,7 @@ function Experience() {
 
 function Work() {
   return (
-    <section id="proyek" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-16 sm:px-8 sm:py-24">
+    <section id="proyek" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-12 sm:px-8 sm:py-14 sm:py-24">
       <Reveal className="border-b-2 border-ink pb-5">
         <p className="label text-ash">Work</p>
         <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Proyek terpilih</h2>
@@ -199,12 +214,12 @@ function Work() {
 
 function About() {
   return (
-    <section id="tentang" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-16 sm:px-8 sm:py-24">
-      <Reveal className="border-b-2 border-ink pb-3">
+    <section id="tentang" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-12 sm:px-8 sm:py-14 sm:py-24">
+      <Reveal className="border-b-2 border-ink pb-3 text-center">
         <h2 className="text-xl font-bold tracking-tight">Tentang</h2>
       </Reveal>
 
-      <Reveal className="mt-6 max-w-2xl space-y-4 text-sm leading-relaxed text-ink/85 sm:text-base">
+      <Reveal className="mx-auto mt-6 max-w-2xl space-y-4 text-center text-sm leading-relaxed text-ink/85 sm:text-base">
         <p>
           Keseharian saya sebagai mahasiswa selama berkuliah biasanya berputar pada siklus merancang
           arsitektur pipeline, train and test data, serta mempelajari AI agent.

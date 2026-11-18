@@ -19,7 +19,7 @@ export const projects: Project[] = [
     slug: "notaris-triage",
     index: "01",
     title: "Notaris Triage",
-    repoName: "kbr-notaris-triage-kelompok3",
+    repoName: "kbr-notaristriage",
     category: "Knowledge representation",
     year: "2026",
     accent: "persimmon",
@@ -31,7 +31,7 @@ export const projects: Project[] = [
       "Chatbot slot-filling yang menyusun jawaban dari hasil SPARQL, bukan dari tebakan model bahasa.",
     ],
     stack: ["OWL DL", "SWRL", "SPARQL", "Protégé", "Python"],
-    repo: "https://github.com/iaanne/kbr-notaris-triage-kelompok3",
+    repo: "https://github.com/iaanne/kbr-notaristriage",
   },
   {
     slug: "rosbd-dedolarisasi",
