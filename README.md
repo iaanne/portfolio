@@ -8,6 +8,8 @@ Situs portofolio statis: React 19, Vite, Tailwind v4, React Router.
 
 ## Menjalankan
 
+Butuh Node 20.19 atau lebih baru.
+
 ```bash
 npm install
 npm run dev
