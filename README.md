@@ -29,6 +29,7 @@ Setiap push ke `main` memicu workflow `.github/workflows/deploy.yml` yang memban
 
 - `src/data/projects.ts` - delapan proyek pilihan, ringkasan dan stack.
 - `src/data/skills.ts` - daftar skill per kategori, dipakai bagian Skills dan animasi di beranda.
+- `src/assets/profile.jpg` - foto profil di beranda.
 - `src/assets/brand/` - logo merek berwarna untuk setiap ikon skill.
 - `src/pages/Home.tsx` - beranda, skill, pengalaman, proyek, tentang, kontak.
 - `src/pages/ProjectPage.tsx` - halaman detail per proyek.
