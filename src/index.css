@@ -7,16 +7,17 @@
   --font-display: "Space Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 
-  --color-cream: #f4f1e7;
-  --color-paper: #fcfbf4;
-  --color-ink: #171613;
-  --color-ash: #6b655a;
-  --color-butter: #ebc24e;
-  --color-persimmon: #b8431f;
-  --color-pine: #2f5d48;
-  --color-denim: #2f4e7e;
-  --color-sky: #c7d8de;
-  --color-sage: #8ba07a;
+  /* Nilai diambil dari CSS sakana.ai: putih, tinta #111827, abu, satu aksen merah. */
+  --color-cream: #ffffff;
+  --color-paper: #f9fafb;
+  --color-ink: #111827;
+  --color-ash: #6b7280;
+  --color-butter: #fdeceb;
+  --color-persimmon: #e10600;
+  --color-pine: #1f2937;
+  --color-denim: #374151;
+  --color-sky: #e5e7eb;
+  --color-sage: #9ca3af;
 }
 
 @layer base {
@@ -136,28 +137,6 @@
     transform: none;
   }
 
-  .marquee-track {
-    display: flex;
-    width: max-content;
-    animation: marquee 38s linear infinite;
-  }
-
-  .marquee:hover .marquee-track {
-    animation-play-state: paused;
-  }
-
-  @keyframes marquee {
-    to {
-      transform: translateX(-50%);
-    }
-  }
-
-  .grid-lines {
-    background-image:
-      linear-gradient(to right, color-mix(in oklab, var(--color-ink) 12%, transparent) 1px, transparent 1px),
-      linear-gradient(to bottom, color-mix(in oklab, var(--color-ink) 12%, transparent) 1px, transparent 1px);
-    background-size: 34px 34px;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -169,10 +148,6 @@
     opacity: 1;
     transform: none;
     transition: none;
-  }
-
-  .marquee-track {
-    animation: none;
   }
 
   .lift,

@@ -16,7 +16,7 @@ export function SiteHeader() {
 
         <nav className="hidden items-center gap-7 sm:flex" aria-label="Navigasi utama">
           {links.map((link) => (
-            <Link key={link.href} to={link.href} className="label hover:underline hover:decoration-2 hover:underline-offset-4">
+            <Link key={link.href} to={link.href} className="label hover:text-persimmon hover:underline hover:decoration-2 hover:underline-offset-4">
               {link.label}
             </Link>
           ))}
