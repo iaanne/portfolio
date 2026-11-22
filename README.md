@@ -21,6 +21,8 @@ npm run dev
 npm run build
 ```
 
+Untuk melihat hasil build secara lokal, jalankan `npm run preview`.
+
 Hasilnya di `dist/`. Skrip build juga menyalin `index.html` menjadi `404.html`, supaya tautan dalam seperti `/proyek/slug` tetap terbuka di hosting yang tidak punya rewrite SPA.
 
 ## Deploy
